@@ -1,4 +1,4 @@
-package com.dev.rj3.fantasma;
+package com.dev.rj3.fantasma.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.dev.rj3.fantasma.R;
 import com.dev.rj3.fantasma.reddit_api.RedditAPI;
 import com.dev.rj3.fantasma.reddit_api.model.Feed;
 import com.dev.rj3.fantasma.reddit_api.model.children.Children;
@@ -22,15 +23,15 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AccountFragment extends Fragment {
+public class PostsFragment extends Fragment {
 
-    private static final String BASE_URL = "https://www.reddit.com/";
+    private static final String BASE_URL = "https://www.reddit.com/r/FantasmaTesting/";
     private TextView textView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.account, container, false);
+        View view = inflater.inflate(R.layout.posts_fragment, container, false);
         textView = view.findViewById(R.id.textView);
         return view;
     }
