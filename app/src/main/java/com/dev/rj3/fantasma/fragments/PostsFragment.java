@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.emoji.widget.EmojiTextView;
 import androidx.fragment.app.Fragment;
 
 import com.dev.rj3.fantasma.R;
@@ -26,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PostsFragment extends Fragment {
 
     private static final String BASE_URL = "https://www.reddit.com/r/FantasmaTesting/";
-    private TextView textView;
+    private EmojiTextView textView;
 
     @Nullable
     @Override
