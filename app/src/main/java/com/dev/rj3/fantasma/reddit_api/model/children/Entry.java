@@ -14,19 +14,18 @@ public class Entry {
     @Expose
     private String subreddit_name_prefixed;
 
-
-
+    @SerializedName("thumbnail")
+    @Expose
+    private String thumbnail;
 
     @SerializedName("stickied")
     @Expose
     private boolean stickied;
 
 
-
     @SerializedName("score")
     @Expose
     private int score;
-
 
 
     @SerializedName("author")
@@ -74,12 +73,20 @@ public class Entry {
         this.author = author;
     }
 
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+
     @Override
     public String toString() {
         return "Entry{" +
                 "title='" + title + '\'' +
                 ", subreddit_name_prefixed='" + subreddit_name_prefixed + '\'' +
-                ", stickied=" + stickied +
                 ", score=" + score +
                 ", author='" + author + '\'' +
                 '}';

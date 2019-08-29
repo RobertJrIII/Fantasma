@@ -6,6 +6,11 @@
         android:icon="@drawable/ic_posts_black_24dp"
         android:title="@string/posts" />
 
+    <item
+
+        android:id="@+id/nav_messages"
+        android:icon="@drawable/ic_email_black_24dp"
+        android:title="@string/messages" />
 
     <item
         android:id="@+id/nav_search"

@@ -26,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PostsFragment extends Fragment {
 
-    private static final String BASE_URL = "https://www.reddit.com/r/FantasmaTesting/";
+    private static final String BASE_URL = "https://www.reddit.com/";
     private EmojiTextView textView;
 
     @Nullable
@@ -63,6 +63,7 @@ public class PostsFragment extends Fragment {
                     content += " " + children.getEntry().getTitle() + "\n";
                     content += " " + children.getEntry().getSubreddit_name_prefixed() + "\n";
                     content += " " + children.getEntry().getAuthor() + "\n";
+
                     content += " " + children.getEntry().getScore() + "\n\n";
                     textView.append(content);
                 }
