@@ -12,31 +12,39 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:padding="2dp" />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="center" />
 
-        <androidx.emoji.widget.EmojiTextView
-            android:id="@+id/postTitle"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_toEndOf="@id/imageView"
-            android:fontFamily="@font/noto_color_emoji_compat"
-            android:text="Test 1"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_alignParentLeft="true"
+            android:layout_toStartOf="@+id/imageView">
 
-        <androidx.emoji.widget.EmojiTextView
-            android:id="@+id/subRedditName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/postTitle"
-            android:layout_toEndOf="@id/imageView"
-            android:fontFamily="@font/noto_color_emoji_compat"
-            android:text="Line 2"
-            android:textColor="@android:color/black"
-            android:textSize="15sp" />
+            <androidx.emoji.widget.EmojiTextView
+                android:id="@+id/postTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
+                android:gravity="center_vertical"
+                android:text="Card Title" />
+
+            <androidx.emoji.widget.EmojiTextView
+                android:id="@+id/subRedditName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/postTitle"
+                android:layout_marginTop="2sp"
+                android:gravity="center_vertical"
+                android:text="Author"
+                android:textSize="10sp" />
+
+
+        </RelativeLayout>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
