@@ -1,7 +1,10 @@
 package com.dev.rj3.fantasma.reddit_api.model.children;
 
+import com.dev.rj3.fantasma.reddit_api.model.children.all_awardings.Awards;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 
 public class Entry {
 
@@ -9,6 +12,17 @@ public class Entry {
     @Expose
     private String title;
 
+    @SerializedName("spoiler")
+    @Expose
+    private boolean spoiler;
+
+    @SerializedName("num_comments")
+    @Expose
+    private int num_comments;
+
+    @SerializedName("all_awardings")
+    @Expose
+    private ArrayList<Awards> awards;
 
     @SerializedName("subreddit_name_prefixed")
     @Expose
@@ -32,6 +46,9 @@ public class Entry {
     @Expose
     private String author;
 
+    @SerializedName("url")
+    @Expose
+    private String url;
 
     public String getTitle() {
         return title;
@@ -82,13 +99,4 @@ public class Entry {
     }
 
 
-    @Override
-    public String toString() {
-        return "Entry{" +
-                "title='" + title + '\'' +
-                ", subreddit_name_prefixed='" + subreddit_name_prefixed + '\'' +
-                ", score=" + score +
-                ", author='" + author + '\'' +
-                '}';
-    }
 }

@@ -56,56 +56,35 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menu) {
 
-            Fragment fragment = null;
+            // Fragment fragment = null;
             switch (menu.getItemId()) {
                 case R.id.nav_posts:
-                    fragment = new PostsFragment();
+                    currentFragment = new PostsFragment();
                     break;
                 case R.id.nav_account:
-                    fragment = new AccountFragment();
+                    currentFragment = new AccountFragment();
                     break;
                 case R.id.nav_search:
-                    fragment = new SearchFragment();
+                    currentFragment = new SearchFragment();
                     break;
                 case R.id.nav_settings:
-                    fragment = new SettingsFragment();
+                    currentFragment = new SettingsFragment();
                     break;
                 case R.id.nav_messages:
-                    fragment = new MessagesFragment();
+                    currentFragment = new MessagesFragment();
                     break;
 
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, currentFragment).commit();
             return true;
         }
     };
 
-    private void showToast(Context context, CharSequence charSequence) {
-        Toast toast = Toast.makeText(context, charSequence, Toast.LENGTH_SHORT);
-        toast.show();
-    }
 
     private BottomNavigationView.OnNavigationItemReselectedListener reselectedListener = new BottomNavigationView.OnNavigationItemReselectedListener() {
         @Override
         public void onNavigationItemReselected(@NonNull MenuItem menu) {
-            switch (menu.getItemId()) {
-                case R.id.nav_posts:
-                    showToast(getApplicationContext(), menu.getTitle());
-                    break;
-                case R.id.nav_account:
-                    showToast(getApplicationContext(), menu.getTitle());
-                    break;
-                case R.id.nav_search:
-                    showToast(getApplicationContext(), menu.getTitle());
-                    break;
-                case R.id.nav_settings:
-                    showToast(getApplicationContext(), menu.getTitle());
-                    break;
-                case R.id.nav_messages:
-                    showToast(getApplicationContext(), menu.getTitle());
-                    break;
 
-            }
         }
     };
 

@@ -42,6 +42,7 @@ public class PostsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.posts_fragment, container, false);
         mRecycleView = view.findViewById(R.id.recycleView);
+        mRecycleView.setHasFixedSize(true);
         return view;
     }
 
@@ -49,14 +50,13 @@ public class PostsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-ImageView v;
 
-      init();
+        init();
 
 
     }
 
-    private void init(){
+    private void init() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -76,16 +76,18 @@ ImageView v;
                 ArrayList<Post> posts = new ArrayList<>();
                 for (Children children : postContent) {
                     Entry entry = children.getEntry();
-                    posts.add(new Post(entry.getTitle(), entry.getSubreddit_name_prefixed()));
+                    posts.add(new Post(entry.getTitle(), entry.getSubreddit_name_prefixed(), entry.getThumbnail()));
+
 
                 }
 
-
+                mAdapter = new PostAdapter(getActivity(), posts);
                 mLayoutManager = new LinearLayoutManager(getActivity());
-                mAdapter = new PostAdapter(posts);
-
                 mRecycleView.setLayoutManager(mLayoutManager);
                 mRecycleView.setAdapter(mAdapter);
+
+
+
 
 
             }
