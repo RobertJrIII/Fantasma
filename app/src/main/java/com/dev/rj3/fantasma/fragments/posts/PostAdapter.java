@@ -20,6 +20,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     private ArrayList<Post> mPosts;
     private Context context;
 
+
+    public PostAdapter(Context context, ArrayList<Post> postArrayList) {
+        mPosts = postArrayList;
+
+        this.context = context;
+
+
+    }
+
     @NonNull
     @Override
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -29,12 +38,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return postViewHolder;
     }
 
-    public PostAdapter(Context context, ArrayList<Post> postArrayList) {
-        mPosts = postArrayList;
-        this.context = context;
-
-
-    }
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
@@ -44,7 +47,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.mTitle.setText(post.getTitle());
         holder.mSubreddit.setText(post.getSubreddit());
 
-        if (url.equals("self") || url.equals("default")) {
+        if (url.equals("self") || url.equals("default") || url.equals("")) {
             imageView.setVisibility(View.GONE);
 
         } else {
@@ -53,6 +56,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         }
 
 
+    }
+
+    public void loadMore(ArrayList<Post> morePosts) {
+        morePosts.addAll(morePosts);
     }
 
     @Override

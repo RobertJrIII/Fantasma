@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +32,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PostsFragment extends Fragment {
 
-    private static final String BASE_URL = "https://www.reddit.com/";
+    private static final String front_BASE_URL = "https://www.reddit.com/";
+    private static final String BASE_URL = "https://www.reddit.com/r/";
     private RecyclerView mRecycleView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -57,11 +59,12 @@ public class PostsFragment extends Fragment {
     }
 
     private void init() {
+
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RedditAPI redditAPI = retrofit.create(RedditAPI.class);
-        Call<Feed> call = redditAPI.getData();
+        Call<Feed> call = redditAPI.getData("funny");
 
         call.enqueue(new Callback<Feed>() {
             @Override
@@ -87,15 +90,36 @@ public class PostsFragment extends Fragment {
                 mRecycleView.setAdapter(mAdapter);
 
 
-
-
-
             }
 
             @Override
             public void onFailure(Call<Feed> call, Throwable t) {
-
+                Toast.makeText(getActivity(), "Something happened.", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+//    private void pagination(){
+//        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//        RedditAPI redditAPI = retrofit.create(RedditAPI.class);
+//        Call<Feed> call = redditAPI.getData();
+//
+//        call.enqueue(new Callback<Feed>() {
+//            @Override
+//            public void onResponse(Call<Feed> call, Response<Feed> response) {
+//
+//
+//
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Feed> call, Throwable t) {
+//                Toast.makeText(getActivity(),"Something happened.",Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+
 }
