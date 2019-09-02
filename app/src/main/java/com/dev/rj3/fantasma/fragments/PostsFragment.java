@@ -1,6 +1,7 @@
 package com.dev.rj3.fantasma.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,11 +61,11 @@ public class PostsFragment extends Fragment {
 
     private void init() {
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(front_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RedditAPI redditAPI = retrofit.create(RedditAPI.class);
-        Call<Feed> call = redditAPI.getData("funny");
+        Call<Feed> call = redditAPI.getSearchResults("cat");
 
         call.enqueue(new Callback<Feed>() {
             @Override
@@ -79,6 +80,7 @@ public class PostsFragment extends Fragment {
                 ArrayList<Post> posts = new ArrayList<>();
                 for (Children children : postContent) {
                     Entry entry = children.getEntry();
+
                     posts.add(new Post(entry.getTitle(), entry.getSubreddit_name_prefixed(), entry.getThumbnail()));
 
 
