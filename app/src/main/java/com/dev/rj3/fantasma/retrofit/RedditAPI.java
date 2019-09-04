@@ -1,6 +1,6 @@
-package com.dev.rj3.fantasma.reddit_api;
+package com.dev.rj3.fantasma.retrofit;
 
-import com.dev.rj3.fantasma.reddit_api.model.Feed;
+import com.dev.rj3.fantasma.model.Feed;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

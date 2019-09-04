@@ -1,4 +1,4 @@
-package com.dev.rj3.fantasma.reddit_api.model.children;
+package com.dev.rj3.fantasma.model.children;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

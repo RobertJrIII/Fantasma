@@ -1,4 +1,4 @@
-package com.dev.rj3.fantasma.reddit_api.model.children.all_awardings;
+package com.dev.rj3.fantasma.model.children.all_awardings;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

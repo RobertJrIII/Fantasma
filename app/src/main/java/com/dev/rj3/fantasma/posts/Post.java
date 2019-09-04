@@ -1,4 +1,4 @@
-package com.dev.rj3.fantasma.fragments.posts;
+package com.dev.rj3.fantasma.posts;
 
 public class Post {
 

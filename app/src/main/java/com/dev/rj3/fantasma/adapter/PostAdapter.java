@@ -1,4 +1,4 @@
-package com.dev.rj3.fantasma.fragments.posts;
+package com.dev.rj3.fantasma.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import com.dev.rj3.fantasma.R;
+import com.dev.rj3.fantasma.posts.Post;
 
 import java.util.ArrayList;
 
