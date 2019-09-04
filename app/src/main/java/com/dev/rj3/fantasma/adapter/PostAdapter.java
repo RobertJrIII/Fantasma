@@ -61,6 +61,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     public void loadMore(ArrayList<Post> morePosts) {
         morePosts.addAll(morePosts);
+        notifyDataSetChanged();
     }
 
     @Override

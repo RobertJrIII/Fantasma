@@ -70,104 +70,21 @@ public class PostsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         model = ViewModelProviders.of(getActivity()).get(PostViewModel.class);
-        //  init();
         getRedditPosts();
 
     }
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//        mLayoutManager = new LinearLayoutManager(getActivity());
-//        mRecycleView.setLayoutManager(mLayoutManager);
-//
-//        mAdapter = new PostAdapter(PostsFragment.this.getActivity(), posts);
-//
-//        mRecycleView.setAdapter(mAdapter);
-//
-//        model = ViewModelProviders.of(getActivity()).get(PostViewModel.class);
-//        //  init();
-//        getRedditPosts();
-//
-//    }
+
 
     private void getRedditPosts() {
-        model.getPostLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<Post>>() {
-            @Override
-            public void onChanged(ArrayList<Post> posts) {
-                List<Post> data = posts;
-                postsList.addAll(data);
-                mAdapter.notifyDataSetChanged();
+        model.getPostLiveData().observe(getViewLifecycleOwner(), posts -> {
+            List<Post> data = posts;
+            postsList.addAll(data);
+            mAdapter.notifyDataSetChanged();
 
 
-            }
         });
 
     }
 
-//    private void init() {
-//
-//        Retrofit retrofit = new Retrofit.Builder().baseUrl(RetrofitRequest.BASE_URL)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//        RedditAPI redditAPI = retrofit.create(RedditAPI.class);
-//        Call<Feed> call = redditAPI.getData("funny");
-//
-//        call.enqueue(new Callback<Feed>() {
-//            @Override
-//            public void onResponse(Call<Feed> call, Response<Feed> response) {
-//
-//                if (!response.isSuccessful()) {
-//                    //  textView.setText("Code: " + response.code());
-//                    return;
-//                }
-//
-//                ArrayList<Children> postContent = response.body().getData().getChildren();
-//                ArrayList<Post> posts = new ArrayList<>();
-//                for (Children children : postContent) {
-//                    Entry entry = children.getEntry();
-//
-//                    posts.add(new Post(entry.getTitle(), entry.getSubreddit_name_prefixed(), entry.getThumbnail()));
-//
-//
-//                }
-//
-//                mAdapter = new PostAdapter(getActivity(), posts);
-//                mLayoutManager = new LinearLayoutManager(getActivity());
-//                mRecycleView.setLayoutManager(mLayoutManager);
-//                mRecycleView.setAdapter(mAdapter);
-//
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Feed> call, Throwable t) {
-//                Toast.makeText(getActivity(), "Something happened.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-    // }
-
-//    private void pagination(){
-//        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//        RedditAPI redditAPI = retrofit.create(RedditAPI.class);
-//        Call<Feed> call = redditAPI.getData();
-//
-//        call.enqueue(new Callback<Feed>() {
-//            @Override
-//            public void onResponse(Call<Feed> call, Response<Feed> response) {
-//
-//
-//
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Feed> call, Throwable t) {
-//                Toast.makeText(getActivity(),"Something happened.",Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 
 }

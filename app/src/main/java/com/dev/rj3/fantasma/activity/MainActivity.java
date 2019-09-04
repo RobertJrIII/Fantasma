@@ -1,4 +1,4 @@
-package com.dev.rj3.fantasma;
+package com.dev.rj3.fantasma.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.dev.rj3.fantasma.R;
 import com.dev.rj3.fantasma.fragments.AccountFragment;
 import com.dev.rj3.fantasma.fragments.MessagesFragment;
 import com.dev.rj3.fantasma.fragments.PostsFragment;
@@ -52,40 +53,36 @@ public class MainActivity extends AppCompatActivity {
         EmojiCompat.init(config);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menu) {
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = menu -> {
 
-            // Fragment fragment = null;
-            switch (menu.getItemId()) {
-                case R.id.nav_posts:
-                    currentFragment = new PostsFragment();
-                    break;
-                case R.id.nav_account:
-                    currentFragment = new AccountFragment();
-                    break;
-                case R.id.nav_search:
-                    currentFragment = new SearchFragment();
-                    break;
-                case R.id.nav_settings:
-                    currentFragment = new SettingsFragment();
-                    break;
-                case R.id.nav_messages:
-                    currentFragment = new MessagesFragment();
-                    break;
 
-            }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, currentFragment).commit();
-            return true;
+        // Fragment fragment = null;
+        switch (menu.getItemId()) {
+            case R.id.nav_posts:
+                currentFragment = new PostsFragment();
+                break;
+            case R.id.nav_account:
+                currentFragment = new AccountFragment();
+                break;
+            case R.id.nav_search:
+                currentFragment = new SearchFragment();
+                break;
+            case R.id.nav_settings:
+                currentFragment = new SettingsFragment();
+                break;
+            case R.id.nav_messages:
+                currentFragment = new MessagesFragment();
+                break;
+
         }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, currentFragment).commit();
+        return true;
+
     };
 
 
-    private BottomNavigationView.OnNavigationItemReselectedListener reselectedListener = new BottomNavigationView.OnNavigationItemReselectedListener() {
-        @Override
-        public void onNavigationItemReselected(@NonNull MenuItem menu) {
+    private BottomNavigationView.OnNavigationItemReselectedListener reselectedListener = menu -> {
 
-        }
     };
 
 }

@@ -29,7 +29,7 @@ public class RedditRepo {
     public LiveData<ArrayList<Post>> getRedditPosts() {
         final MutableLiveData<ArrayList<Post>> postData = new MutableLiveData<>();
 
-        Call<Feed> feed = redditAPI.getData();
+        Call<Feed> feed = redditAPI.getData("funny");
         feed.enqueue(new Callback<Feed>() {
             @Override
             public void onResponse(Call<Feed> call, Response<Feed> response) {
