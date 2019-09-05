@@ -33,7 +33,7 @@ public class PostDataSource extends PageKeyedDataSource<String, Post> {
     public void loadInitial(@NonNull LoadInitialParams<String> params, @NonNull final LoadInitialCallback<String, Post> callback) {
         redditAPI = RetrofitInstance.getRetrofitInstance().create(RedditAPI.class);
 
-        Call<Feed> call = redditAPI.getRedditData("");
+        Call<Feed> call = redditAPI.getRedditData(null);
 
 
         call.enqueue(new Callback<Feed>() {
@@ -58,7 +58,6 @@ public class PostDataSource extends PageKeyedDataSource<String, Post> {
                         posts.add(post);
                     }
                     callback.onResult(posts, null, posts.get(posts.size() - 1).getName());
-                    //  postData.setValue(posts);
 
 
                 }
@@ -103,7 +102,7 @@ public class PostDataSource extends PageKeyedDataSource<String, Post> {
                         post.setName(entry.getName());
                         posts.add(post);
                     }
-                    callback.onResult(posts, params.key);
+                    callback.onResult(posts, posts.get(posts.size() - 1).getName());
                 }
             }
 
