@@ -53,36 +53,42 @@ public class MainActivity extends AppCompatActivity {
         EmojiCompat.init(config);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = menu -> {
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menu) {
 
 
-        // Fragment fragment = null;
-        switch (menu.getItemId()) {
-            case R.id.nav_posts:
-                currentFragment = new PostsFragment();
-                break;
-            case R.id.nav_account:
-                currentFragment = new AccountFragment();
-                break;
-            case R.id.nav_search:
-                currentFragment = new SearchFragment();
-                break;
-            case R.id.nav_settings:
-                currentFragment = new SettingsFragment();
-                break;
-            case R.id.nav_messages:
-                currentFragment = new MessagesFragment();
-                break;
+            // Fragment fragment = null;
+            switch (menu.getItemId()) {
+                case R.id.nav_posts:
+                    currentFragment = new PostsFragment();
+                    break;
+                case R.id.nav_account:
+                    currentFragment = new AccountFragment();
+                    break;
+                case R.id.nav_search:
+                    currentFragment = new SearchFragment();
+                    break;
+                case R.id.nav_settings:
+                    currentFragment = new SettingsFragment();
+                    break;
+                case R.id.nav_messages:
+                    currentFragment = new MessagesFragment();
+                    break;
+
+            }
+            MainActivity.this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, currentFragment).commit();
+            return true;
 
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, currentFragment).commit();
-        return true;
-
     };
 
 
-    private BottomNavigationView.OnNavigationItemReselectedListener reselectedListener = menu -> {
+    private BottomNavigationView.OnNavigationItemReselectedListener reselectedListener = new BottomNavigationView.OnNavigationItemReselectedListener() {
+        @Override
+        public void onNavigationItemReselected(@NonNull MenuItem menu) {
 
+        }
     };
 
 }

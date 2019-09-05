@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.emoji.widget.EmojiTextView;
+import androidx.paging.PagedList;
+import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,17 +19,23 @@ import com.dev.rj3.fantasma.posts.Post;
 
 import java.util.ArrayList;
 
-public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
-    private ArrayList<Post> mPosts;
+public class PostAdapter extends PagedListAdapter<Post,PostAdapter.PostViewHolder>{
+    // private ArrayList<Post> mPosts;
     private Context context;
 
 
-    public PostAdapter(Context context, ArrayList<Post> postArrayList) {
-        mPosts = postArrayList;
+    public PostAdapter(Context context) {
+        super(Post.CALLBACK);
+        //  mPosts = postArrayList;
 
         this.context = context;
 
 
+    }
+
+    @Override
+    public void submitList(PagedList<Post> pagedList) {
+        super.submitList(pagedList);
     }
 
     @NonNull
@@ -42,7 +50,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        Post post = mPosts.get(position);
+        Post post = getItem(position);
         String url = post.getThumbnail_url();
         ImageView imageView = holder.mImageView;
         holder.mTitle.setText(post.getTitle());
@@ -59,15 +67,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     }
 
-    public void loadMore(ArrayList<Post> morePosts) {
-        morePosts.addAll(morePosts);
-        notifyDataSetChanged();
-    }
 
-    @Override
-    public int getItemCount() {
-        return mPosts.size();
-    }
+
+
 
     public static class PostViewHolder extends RecyclerView.ViewHolder {
         public EmojiTextView mTitle;

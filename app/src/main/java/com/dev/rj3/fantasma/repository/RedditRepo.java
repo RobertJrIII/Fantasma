@@ -8,7 +8,7 @@ import com.dev.rj3.fantasma.model.children.Children;
 import com.dev.rj3.fantasma.model.children.Entry;
 import com.dev.rj3.fantasma.posts.Post;
 import com.dev.rj3.fantasma.retrofit.RedditAPI;
-import com.dev.rj3.fantasma.retrofit.RetrofitRequest;
+import com.dev.rj3.fantasma.retrofit.RetrofitInstance;
 
 import java.util.ArrayList;
 
@@ -23,13 +23,13 @@ public class RedditRepo {
 
 
     public RedditRepo() {
-        redditAPI = RetrofitRequest.getRetrofitInstance().create(RedditAPI.class);
+        redditAPI = RetrofitInstance.getRetrofitInstance().create(RedditAPI.class);
     }
 
     public LiveData<ArrayList<Post>> getRedditPosts() {
         final MutableLiveData<ArrayList<Post>> postData = new MutableLiveData<>();
 
-        Call<Feed> feed = redditAPI.getData("funny");
+        Call<Feed> feed = redditAPI.getSubRedditData();
         feed.enqueue(new Callback<Feed>() {
             @Override
             public void onResponse(Call<Feed> call, Response<Feed> response) {
