@@ -17,10 +17,8 @@ import com.bumptech.glide.Glide;
 import com.dev.rj3.fantasma.R;
 import com.dev.rj3.fantasma.posts.Post;
 
-import java.util.ArrayList;
 
-public class PostAdapter extends PagedListAdapter<Post,PostAdapter.PostViewHolder>{
-    // private ArrayList<Post> mPosts;
+public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHolder> {
     private Context context;
 
 
@@ -43,7 +41,6 @@ public class PostAdapter extends PagedListAdapter<Post,PostAdapter.PostViewHolde
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.post_item, parent, false);
         PostViewHolder postViewHolder = new PostViewHolder(v);
-
         return postViewHolder;
     }
 
@@ -60,15 +57,19 @@ public class PostAdapter extends PagedListAdapter<Post,PostAdapter.PostViewHolde
             imageView.setVisibility(View.GONE);
 
         } else {
-            imageView.setVisibility(View.VISIBLE);
-            Glide.with(context).load(url).into(imageView);
+
+//            if (post.getThumbnail_url().equals("nsfw")) {
+////TODO add NSFW Image here for now imageview is gone
+//                imageView.setVisibility(View.GONE);
+//
+//            } else {
+                imageView.setVisibility(View.VISIBLE);
+                Glide.with(context).load(url).centerInside().into(imageView);
+           // }
         }
 
 
     }
-
-
-
 
 
     public static class PostViewHolder extends RecyclerView.ViewHolder {

@@ -24,8 +24,6 @@ import java.util.List;
 
 public class PostsFragment extends Fragment {
 
-//    private static final String front_BASE_URL = "https://www.reddit.com/";
-//    private static final String BASE_URL = "https://www.reddit.com/r/";
 
     private RecyclerView mRecycleView;
     public PostAdapter mAdapter;
@@ -38,7 +36,7 @@ public class PostsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.posts_fragment, container, false);
         mRecycleView = view.findViewById(R.id.recycleView);
-        // mRecycleView.setHasFixedSize(true);
+        mRecycleView.setHasFixedSize(true);
 
 
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -62,16 +60,7 @@ public class PostsFragment extends Fragment {
 
 
     private void getRedditPosts() {
-//        model.getPostLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<Post>>() {
-//            @Override
-//            public void onChanged(ArrayList<Post> posts) {
-//                List<Post> data = posts;
-//                postsList.addAll(data);
-//                mAdapter.notifyDataSetChanged();
-//
-//
-//            }
-//        });
+
         model.getPagedListLiveData().observe(getViewLifecycleOwner(), new Observer<PagedList<Post>>() {
             @Override
             public void onChanged(PagedList<Post> postLiveData) {

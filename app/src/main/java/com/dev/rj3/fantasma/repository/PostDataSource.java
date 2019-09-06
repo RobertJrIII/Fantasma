@@ -22,28 +22,32 @@ public class PostDataSource extends PageKeyedDataSource<String, Post> {
 
     private RedditAPI redditAPI;
     private Application application;
+    private String SubName = "";
 
     public PostDataSource(RedditAPI redditAPI, Application application) {
         this.redditAPI = redditAPI;
         this.application = application;
     }
 
+    public String getSubName() {
+        return SubName;
+    }
+
+    public void setSubName(String subName) {
+        SubName = subName;
+    }
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<String> params, @NonNull final LoadInitialCallback<String, Post> callback) {
         redditAPI = RetrofitInstance.getRetrofitInstance().create(RedditAPI.class);
 
-        Call<Feed> call = redditAPI.getRedditData(null);
+        Call<Feed> call = redditAPI.getSubRedditData(getSubName(), null);
 
 
         call.enqueue(new Callback<Feed>() {
             @Override
             public void onResponse(Call<Feed> call, Response<Feed> response) {
 
-                if (!response.isSuccessful()) {
-
-                    return;
-                }
 
                 ArrayList<Post> posts = new ArrayList<>();
                 ArrayList<Children> childrenArrayList = response.body().getData().getChildren();
@@ -80,17 +84,14 @@ public class PostDataSource extends PageKeyedDataSource<String, Post> {
     public void loadAfter(@NonNull final LoadParams<String> params, @NonNull final LoadCallback<String, Post> callback) {
         redditAPI = RetrofitInstance.getRetrofitInstance().create(RedditAPI.class);
 
-        Call<Feed> call = redditAPI.getRedditData(params.key);
+        Call<Feed> call = redditAPI.getSubRedditData(getSubName(), params.key);
 
 
         call.enqueue(new Callback<Feed>() {
             @Override
             public void onResponse(Call<Feed> call, Response<Feed> response) {
 
-                if (!response.isSuccessful()) {
-                    //  postData.setValue(null);
-                    return;
-                }
+
                 ArrayList<Children> childrenArrayList = response.body().getData().getChildren();
                 ArrayList<Post> posts = new ArrayList<>();
 

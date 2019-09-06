@@ -10,9 +10,6 @@ import retrofit2.http.Query;
 
 public interface RedditAPI {
 
-//    @Headers("Content-Type: application/json")
-//    @GET(".json")
-//    Call<Feed> getData(@Query("after") String after);
 
     @Headers("Content-Type: application/json")
     @GET(".json")
@@ -20,7 +17,7 @@ public interface RedditAPI {
 
     @Headers("Content-Type: application/json")
     @GET("{subName}/.json")
-    Call<Feed> getSubRedditData(@Path("subName") String subName);
+    Call<Feed> getSubRedditData(@Path("subName") String subName, @Query("after") String after);
 
     @Headers("Content-Type: application/json")
     @GET("search.json")
@@ -29,7 +26,7 @@ public interface RedditAPI {
 
     @Headers("Content-Type: application/json")
     @GET(".json")
-    Call<Feed> getRedditData(@Query("after") String after);
+    Call<Feed> getFrontPageData(@Query("after") String after);
 
 
 }
