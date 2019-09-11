@@ -13,10 +13,7 @@
         android:icon="@drawable/ic_email_black_24dp"
         android:title="@string/messages" />
 
-    <item
-        android:id="@id/searchFragment"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title="@string/search" />
+
 
     <item
         android:id="@id/accountFragment"

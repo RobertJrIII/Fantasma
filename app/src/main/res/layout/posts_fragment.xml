@@ -3,22 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_above="@id/recycleView"
+    android:layout_height="match_parent">
 
-    >
-
-
-
-    <androidx.recyclerview.widget.RecyclerView
-
-
-        android:id="@+id/recycleView"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/post_item" />
+        android:layout_height="match_parent">
 
 
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:orientation="vertical"
+            android:scrollbars="none"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/post_item" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </RelativeLayout>

@@ -14,10 +14,6 @@
         android:name="com.dev.rj3.fantasma.fragments.MessagesFragment"
         android:label="message_fragment" />
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.dev.rj3.fantasma.fragments.SearchFragment"
-        android:label="search_fragment"/>
-    <fragment
         android:id="@+id/accountFragment"
         android:name="com.dev.rj3.fantasma.fragments.AccountFragment"
         android:label="account_fragment" />

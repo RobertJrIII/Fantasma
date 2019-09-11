@@ -50,6 +50,12 @@ public class PostsFragment extends Fragment {
         return view;
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

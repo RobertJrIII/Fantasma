@@ -9,16 +9,6 @@
 
     >
 
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-
-        android:layout_gravity="top"
-
-
-        />
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -26,21 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/navBar"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
 
         app:defaultNavHost="true"
         app:navGraph="@navigation/bottom_navigation"
         tools:layout="@layout/posts_fragment" />
 
-
-
-
-
-
-
-
-
+    <!--        app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
