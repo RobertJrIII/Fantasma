@@ -39,7 +39,7 @@ public class PostDataSource extends PageKeyedDataSource<String, Post> {
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<String> params, @NonNull final LoadInitialCallback<String, Post> callback) {
-        redditAPI = RetrofitInstance.getRetrofitInstance().create(RedditAPI.class);
+        redditAPI = RetrofitInstance.getRetrofitInstance();
 
         Call<Feed> call = redditAPI.getSubRedditData(getSubName(), null);
 
@@ -82,7 +82,7 @@ public class PostDataSource extends PageKeyedDataSource<String, Post> {
 
     @Override
     public void loadAfter(@NonNull final LoadParams<String> params, @NonNull final LoadCallback<String, Post> callback) {
-        redditAPI = RetrofitInstance.getRetrofitInstance().create(RedditAPI.class);
+        redditAPI = RetrofitInstance.getRetrofitInstance();
 
         Call<Feed> call = redditAPI.getSubRedditData(getSubName(), params.key);
 

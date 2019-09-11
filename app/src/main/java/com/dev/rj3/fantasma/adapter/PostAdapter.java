@@ -24,7 +24,6 @@ public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHold
 
     public PostAdapter(Context context) {
         super(Post.CALLBACK);
-        //  mPosts = postArrayList;
 
         this.context = context;
 
@@ -53,31 +52,31 @@ public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHold
         holder.mTitle.setText(post.getTitle());
         holder.mSubreddit.setText(post.getSubreddit());
 
-        if (url.equals("self") || url.equals("default") || url.equals("")) {
+        if (url.equals("self") || url.equals("default") || url.equals("") || url.equals("nsfw") || url.equals("spoiler") || url.equals("/image")) {
             imageView.setVisibility(View.GONE);
 
         } else {
 
-//            if (post.getThumbnail_url().equals("nsfw")) {
-////TODO add NSFW Image here for now imageview is gone
-//                imageView.setVisibility(View.GONE);
-//
-//            } else {
+            if (post.getThumbnail_url().equals("nsfw")) {
+//TODO add NSFW Image here for now imageview is gone
+                imageView.setVisibility(View.GONE);
+
+            } else {
                 imageView.setVisibility(View.VISIBLE);
-                Glide.with(context).load(url).centerInside().into(imageView);
-           // }
+                Glide.with(context).load(url).centerCrop().into(imageView);
+            }
         }
 
 
     }
 
 
-    public static class PostViewHolder extends RecyclerView.ViewHolder {
-        public EmojiTextView mTitle;
-        public EmojiTextView mSubreddit;
-        public ImageView mImageView;
+    protected static class PostViewHolder extends RecyclerView.ViewHolder {
+        private EmojiTextView mTitle;
+        private EmojiTextView mSubreddit;
+        private ImageView mImageView;
 
-        public PostViewHolder(@NonNull View itemView) {
+        private PostViewHolder(@NonNull View itemView) {
             super(itemView);
             mTitle = itemView.findViewById(R.id.postTitle);
             mSubreddit = itemView.findViewById(R.id.subRedditName);

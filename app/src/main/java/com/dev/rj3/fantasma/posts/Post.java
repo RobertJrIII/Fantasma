@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.DiffUtil;
 public class Post {
 
     private String title;
-    private String subreddit, thumbnail_url;
+    private String subreddit;
+
+    private String thumbnail_url;
     private String name;
 
     public Post(String title, String subreddit, String thumbnail_url) {

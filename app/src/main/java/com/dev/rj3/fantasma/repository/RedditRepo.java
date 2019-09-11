@@ -23,7 +23,7 @@ public class RedditRepo {
 
 
     public RedditRepo() {
-        redditAPI = RetrofitInstance.getRetrofitInstance().create(RedditAPI.class);
+        redditAPI = RetrofitInstance.getRetrofitInstance();
     }
 
     public LiveData<ArrayList<Post>> getRedditPosts() {

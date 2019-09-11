@@ -10,7 +10,6 @@ import androidx.paging.PagedList;
 
 import com.dev.rj3.fantasma.model.PostDataSourceFactory;
 import com.dev.rj3.fantasma.posts.Post;
-import com.dev.rj3.fantasma.repository.PostDataSource;
 import com.dev.rj3.fantasma.retrofit.RedditAPI;
 import com.dev.rj3.fantasma.retrofit.RetrofitInstance;
 
@@ -21,16 +20,15 @@ import java.util.concurrent.Executors;
 public class PostViewModel extends AndroidViewModel {
 
     private Executor executor;
-    LiveData<PagedList<Post>> pagedListLiveData;
-    LiveData<PostDataSource> postDataSourceLiveData;
+    private LiveData<PagedList<Post>> pagedListLiveData;
 
     public PostViewModel(@NonNull Application application) {
         super(application);
 
 
-        RedditAPI redditAPI = RetrofitInstance.getRetrofitInstance().create(RedditAPI.class);
+        RedditAPI redditAPI = RetrofitInstance.getRetrofitInstance();
         PostDataSourceFactory postDataSourceFactory = new PostDataSourceFactory(redditAPI, application);
-        postDataSourceLiveData = postDataSourceFactory.getMutableLiveData();
+        //postDataSourceLiveData = postDataSourceFactory.getMutableLiveData();
 
         PagedList.Config config = (new PagedList.Config.Builder())
                 .setEnablePlaceholders(true)

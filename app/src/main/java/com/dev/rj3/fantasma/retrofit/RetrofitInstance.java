@@ -10,13 +10,13 @@ public class RetrofitInstance {
     private static final String front_BASE_URL = "https://www.reddit.com/";
     public static final String BASE_URL = "https://www.reddit.com/r/";
 
-    public static Retrofit getRetrofitInstance() {
+    public static RedditAPI getRetrofitInstance() {
 
         if (retrofit == null) {
             retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-        return retrofit;
+        return retrofit.create(RedditAPI.class);
     }
 }
