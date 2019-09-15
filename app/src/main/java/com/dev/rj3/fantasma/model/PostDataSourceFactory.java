@@ -31,6 +31,9 @@ public class PostDataSourceFactory extends DataSource.Factory {
         return postDataSource;
     }
 
+    public PostDataSource getPostDataSource() {
+        return postDataSource;
+    }
 
     public MutableLiveData<PostDataSource> getMutableLiveData() {
         return mutableLiveData;

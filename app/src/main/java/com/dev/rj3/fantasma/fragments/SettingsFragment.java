@@ -7,11 +7,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.dev.rj3.fantasma.R;
 
 public class SettingsFragment extends Fragment {
+
+
+
 
     @Nullable
     @Override
@@ -20,4 +24,18 @@ public class SettingsFragment extends Fragment {
 
 
     }
+
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+    }
+
 }

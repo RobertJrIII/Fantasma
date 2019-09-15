@@ -65,13 +65,10 @@ public class PostsFragment extends Fragment {
 
     private void getRedditPosts() {
 
-        sharedViewModel.getPagedListLiveData().observe(getViewLifecycleOwner(), new Observer<PagedList<Post>>() {
-            @Override
-            public void onChanged(PagedList<Post> postLiveData) {
-                postsList = postLiveData;
-                mAdapter.submitList(postsList);
+        sharedViewModel.getPagedListLiveData().observe(getViewLifecycleOwner(), postLiveData -> {
+            postsList = postLiveData;
+            mAdapter.submitList(postsList);
 
-            }
         });
     }
 

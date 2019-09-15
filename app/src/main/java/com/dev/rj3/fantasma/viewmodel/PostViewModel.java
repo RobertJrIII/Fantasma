@@ -21,14 +21,16 @@ public class PostViewModel extends AndroidViewModel {
 
     private Executor executor;
     private LiveData<PagedList<Post>> pagedListLiveData;
+    private PostDataSourceFactory postDataSourceFactory;
 
+    @SuppressWarnings("unchecked")
     public PostViewModel(@NonNull Application application) {
         super(application);
 
 
         RedditAPI redditAPI = RetrofitInstance.getRetrofitInstance();
-        PostDataSourceFactory postDataSourceFactory = new PostDataSourceFactory(redditAPI, application);
-        //postDataSourceLiveData = postDataSourceFactory.getMutableLiveData();
+        postDataSourceFactory = new PostDataSourceFactory(redditAPI, application);
+
 
         PagedList.Config config = (new PagedList.Config.Builder())
                 .setEnablePlaceholders(true)
@@ -50,5 +52,7 @@ public class PostViewModel extends AndroidViewModel {
         return pagedListLiveData;
     }
 
-
+    public PostDataSourceFactory getPostDataSourceFactory() {
+        return postDataSourceFactory;
+    }
 }

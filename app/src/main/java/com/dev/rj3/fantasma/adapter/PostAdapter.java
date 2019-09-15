@@ -18,25 +18,31 @@ import com.bumptech.glide.Glide;
 import com.dev.rj3.fantasma.R;
 import com.dev.rj3.fantasma.posts.Post;
 
-import java.util.List;
-
 
 public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHolder> {
     private Context context;
 
 
     public PostAdapter(Context context) {
-        super(Post.CALLBACK);
+        super(DIFF_CALLBACK);
 
         this.context = context;
 
 
     }
 
-    @Override
-    public void submitList(PagedList<Post> pagedList) {
-        super.submitList(pagedList);
-    }
+    private static final DiffUtil.ItemCallback<Post> DIFF_CALLBACK = new DiffUtil.ItemCallback<Post>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Post oldItem, @NonNull Post newItem) {
+            return oldItem.getName().equals(newItem.getName());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Post oldItem, @NonNull Post newItem) {
+            return false;
+        }
+    };
+
 
     @NonNull
     @Override
@@ -72,7 +78,6 @@ public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHold
 
 
     }
-
 
 
     protected static class PostViewHolder extends RecyclerView.ViewHolder {
