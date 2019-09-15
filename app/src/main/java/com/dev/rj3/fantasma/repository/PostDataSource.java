@@ -57,7 +57,7 @@ public class PostDataSource extends PageKeyedDataSource<String, Post> {
 
                     for (Children children : childrenArrayList) {
                         Entry entry = children.getEntry();
-                        Post post = new Post(entry.getTitle(), entry.getSubreddit_name_prefixed(), entry.getThumbnail());
+                        Post post = new Post(entry.getTitle(), entry.getAuthor(), entry.getSubreddit_name_prefixed(), entry.getThumbnail());
                         post.setName(entry.getName());
                         posts.add(post);
                     }
@@ -99,7 +99,7 @@ public class PostDataSource extends PageKeyedDataSource<String, Post> {
                 if (response.body() != null && childrenArrayList != null) {
                     for (Children children : childrenArrayList) {
                         Entry entry = children.getEntry();
-                        Post post = new Post(entry.getTitle(), entry.getSubreddit_name_prefixed(), entry.getThumbnail());
+                        Post post = new Post(entry.getTitle(), entry.getAuthor(), entry.getSubreddit_name_prefixed(), entry.getThumbnail());
                         post.setName(entry.getName());
                         posts.add(post);
                     }

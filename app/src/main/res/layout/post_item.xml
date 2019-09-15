@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="2dp"
     android:layout_marginTop="2dp"
-    android:layout_marginRight="2dp">
+    android:layout_marginRight="2dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
 
     <RelativeLayout
 
@@ -19,33 +21,53 @@
             android:id="@+id/imageView"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="TODO"
             android:padding="2dp"
             android:scaleType="center" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/imageView"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp">
 
-            android:layout_toLeftOf="@+id/imageView">
 
             <androidx.emoji.widget.EmojiTextView
                 android:id="@+id/postTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:text="Card Title" />
+                android:text="Card Title"
+                android:textSize="14sp"
+
+                />
+
+            <androidx.emoji.widget.EmojiTextView
+                android:id="@+id/author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/postTitle"
+
+                android:layout_marginTop="2dp"
+
+                android:gravity="center_vertical"
+                android:text="Author"
+                android:textSize="10sp" />
 
             <androidx.emoji.widget.EmojiTextView
                 android:id="@+id/subRedditName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/postTitle"
-                android:layout_marginTop="2sp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@id/author"
                 android:gravity="center_vertical"
-                android:text="Author"
-                android:textSize="12sp" />
+                android:text="Sub"
+                android:textSize="10sp" />
 
 
         </RelativeLayout>

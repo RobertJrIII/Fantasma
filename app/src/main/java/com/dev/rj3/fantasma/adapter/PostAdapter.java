@@ -10,12 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.emoji.widget.EmojiTextView;
 import androidx.paging.PagedList;
 import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
 import com.dev.rj3.fantasma.R;
 import com.dev.rj3.fantasma.posts.Post;
+
+import java.util.List;
 
 
 public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHolder> {
@@ -51,19 +54,19 @@ public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHold
         ImageView imageView = holder.mImageView;
         holder.mTitle.setText(post.getTitle());
         holder.mSubreddit.setText(post.getSubreddit());
-
-        if (url.equals("self") || url.equals("default") || url.equals("") || url.equals("nsfw") || url.equals("spoiler") || url.equals("/image")) {
+        holder.mAuthor.setText(post.getAuthor());
+        if (url.equals("self") || url.equals("default") || url.equals("") || url.equals("nsfw") || url.equals("spoiler")) {
             imageView.setVisibility(View.GONE);
 
         } else {
-
-            if (post.getThumbnail_url().equals("nsfw")) {
 //TODO add NSFW Image here for now imageview is gone
-                imageView.setVisibility(View.GONE);
+            if (url.equals("image")) {
 
             } else {
+
+
                 imageView.setVisibility(View.VISIBLE);
-                Glide.with(context).load(url).centerCrop().into(imageView);
+                Glide.with(context).load(url).fitCenter().into(imageView);
             }
         }
 
@@ -71,16 +74,20 @@ public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHold
     }
 
 
+
     protected static class PostViewHolder extends RecyclerView.ViewHolder {
         private EmojiTextView mTitle;
         private EmojiTextView mSubreddit;
         private ImageView mImageView;
+        private EmojiTextView mAuthor;
 
         private PostViewHolder(@NonNull View itemView) {
             super(itemView);
             mTitle = itemView.findViewById(R.id.postTitle);
             mSubreddit = itemView.findViewById(R.id.subRedditName);
             mImageView = itemView.findViewById(R.id.imageView);
+            mAuthor = itemView.findViewById(R.id.author);
+
         }
     }
 

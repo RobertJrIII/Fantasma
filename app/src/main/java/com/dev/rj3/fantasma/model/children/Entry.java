@@ -1,6 +1,7 @@
 package com.dev.rj3.fantasma.model.children;
 
 import com.dev.rj3.fantasma.model.children.all_awardings.Awards;
+import com.dev.rj3.fantasma.model.children.images.Images;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -24,13 +25,17 @@ public class Entry {
     @Expose
     private boolean hide_score;
 
-    @SerializedName("archieved")
+    @SerializedName("archived")
     @Expose
-    private boolean archieved;
+    private boolean archived;
 
     @SerializedName("name")
     @Expose
     private String name;
+
+    @SerializedName("images")
+    @Expose
+    private ArrayList<Images> images;
 
     @SerializedName("title")
     @Expose
@@ -159,11 +164,11 @@ public class Entry {
     }
 
     public boolean isArchieved() {
-        return archieved;
+        return archived;
     }
 
-    public void setArchieved(boolean archieved) {
-        this.archieved = archieved;
+    public void setArchieved(boolean archived) {
+        this.archived = archived;
     }
 
     public String getName() {
@@ -212,5 +217,13 @@ public class Entry {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public ArrayList<Images> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<Images> images) {
+        this.images = images;
     }
 }

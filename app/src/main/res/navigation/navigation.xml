@@ -21,4 +21,8 @@
         android:id="@+id/settingsFragment"
         android:name="com.dev.rj3.fantasma.fragments.SettingsFragment"
         android:label="settings_fragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.dev.rj3.fantasma.fragments.SearchFragment"
+        android:label="SearchFragment" />
 </navigation>

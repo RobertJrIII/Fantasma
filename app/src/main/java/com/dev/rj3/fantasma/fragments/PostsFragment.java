@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -29,11 +30,12 @@ public class PostsFragment extends Fragment {
     public PostAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private PagedList<Post> postsList;
-    PostViewModel model;
+    private PostViewModel sharedViewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.posts_fragment, container, false);
         mRecycleView = view.findViewById(R.id.recycleView);
         mRecycleView.setHasFixedSize(true);
@@ -52,14 +54,10 @@ public class PostsFragment extends Fragment {
 
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        model = ViewModelProviders.of(getActivity()).get(PostViewModel.class);
+
+        sharedViewModel = ViewModelProviders.of(getActivity()).get(PostViewModel.class);
         getRedditPosts();
 
     }
@@ -67,7 +65,7 @@ public class PostsFragment extends Fragment {
 
     private void getRedditPosts() {
 
-        model.getPagedListLiveData().observe(getViewLifecycleOwner(), new Observer<PagedList<Post>>() {
+        sharedViewModel.getPagedListLiveData().observe(getViewLifecycleOwner(), new Observer<PagedList<Post>>() {
             @Override
             public void onChanged(PagedList<Post> postLiveData) {
                 postsList = postLiveData;
