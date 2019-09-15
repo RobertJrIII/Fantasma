@@ -37,11 +37,16 @@
         android:layout_gravity="bottom"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="@color/colorPrimaryDark"
+
+        android:background="?android:attr/windowBackground"
         app:itemIconTint="@drawable/bottom_navigation_selector"
         app:labelVisibilityMode="unlabeled"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
-        app:menu="@menu/bottom_navbar_menu" />
+        app:menu="@menu/bottom_navbar_menu"
+
+
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+

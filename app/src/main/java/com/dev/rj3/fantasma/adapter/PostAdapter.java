@@ -8,7 +8,6 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.emoji.widget.EmojiTextView;
-import androidx.paging.PagedList;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,14 +38,15 @@ public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHold
 
         @Override
         public boolean areContentsTheSame(@NonNull Post oldItem, @NonNull Post newItem) {
-            return false;
+
+            return (oldItem.getTitle().equals(newItem.getTitle()) && oldItem.getAuthor().equals(newItem.getAuthor()) && oldItem.getSubreddit().equals(newItem.getSubreddit()));
         }
     };
-
 
     @NonNull
     @Override
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View v = LayoutInflater.from(context).inflate(R.layout.post_item, parent, false);
         PostViewHolder postViewHolder = new PostViewHolder(v);
         return postViewHolder;
@@ -55,6 +55,8 @@ public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHold
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
+
+
         Post post = getItem(position);
         String url = post.getThumbnail_url();
         ImageView imageView = holder.mImageView;
