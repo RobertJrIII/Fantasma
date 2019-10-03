@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.rj3.fantasma.R;
+import com.dev.rj3.fantasma.model.children.Entry;
 import com.dev.rj3.fantasma.posts.Post;
 import com.dev.rj3.fantasma.adapter.PostAdapter;
 import com.dev.rj3.fantasma.viewmodel.PostViewModel;
@@ -27,9 +28,9 @@ public class PostsFragment extends Fragment {
 
 
     private RecyclerView mRecycleView;
-    public PostAdapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private PagedList<Post> postsList;
+    private PostAdapter mAdapter;
+
+    private PagedList<Entry> postsList;
     private PostViewModel sharedViewModel;
 
     @Nullable
@@ -41,12 +42,12 @@ public class PostsFragment extends Fragment {
         mRecycleView.setHasFixedSize(true);
 
 
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecycleView.setLayoutManager(mLayoutManager);
 
         mAdapter = new PostAdapter(PostsFragment.this.getActivity());
 
-        mRecycleView.setAdapter(mAdapter);
+
 
 
         return view;
@@ -59,6 +60,8 @@ public class PostsFragment extends Fragment {
 
         sharedViewModel = ViewModelProviders.of(getActivity()).get(PostViewModel.class);
         getRedditPosts();
+        mRecycleView.setAdapter(mAdapter);
+
 
     }
 
@@ -70,6 +73,8 @@ public class PostsFragment extends Fragment {
             mAdapter.submitList(postsList);
 
         });
+
+
     }
 
 

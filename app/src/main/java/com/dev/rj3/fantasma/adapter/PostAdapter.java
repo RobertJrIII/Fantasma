@@ -15,10 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import com.dev.rj3.fantasma.R;
+import com.dev.rj3.fantasma.model.children.Entry;
 import com.dev.rj3.fantasma.posts.Post;
 
 
-public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHolder> {
+public class PostAdapter extends PagedListAdapter<Entry, PostAdapter.PostViewHolder> {
     private Context context;
 
 
@@ -30,16 +31,15 @@ public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHold
 
     }
 
-    private static final DiffUtil.ItemCallback<Post> DIFF_CALLBACK = new DiffUtil.ItemCallback<Post>() {
+    private static final DiffUtil.ItemCallback<Entry> DIFF_CALLBACK = new DiffUtil.ItemCallback<Entry>() {
         @Override
-        public boolean areItemsTheSame(@NonNull Post oldItem, @NonNull Post newItem) {
+        public boolean areItemsTheSame(@NonNull Entry oldItem, @NonNull Entry newItem) {
             return oldItem.getName().equals(newItem.getName());
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull Post oldItem, @NonNull Post newItem) {
-
-            return (oldItem.getTitle().equals(newItem.getTitle()) && oldItem.getAuthor().equals(newItem.getAuthor()) && oldItem.getSubreddit().equals(newItem.getSubreddit()));
+        public boolean areContentsTheSame(@NonNull Entry oldItem, @NonNull Entry newItem) {
+            return (oldItem.getTitle().equals(newItem.getTitle()) && oldItem.getAuthor().equals(newItem.getAuthor()) && oldItem.getSubreddit_name_prefixed().equals(newItem.getSubreddit_name_prefixed()));
         }
     };
 
@@ -57,11 +57,11 @@ public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHold
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
 
 
-        Post post = getItem(position);
-        String url = post.getThumbnail_url();
+        Entry post = getItem(position);
+        String url = post.getThumbnail();
         ImageView imageView = holder.mImageView;
         holder.mTitle.setText(post.getTitle());
-        holder.mSubreddit.setText(post.getSubreddit());
+        holder.mSubreddit.setText(post.getSubreddit_name_prefixed());
         holder.mAuthor.setText(post.getAuthor());
         if (url.equals("self") || url.equals("default") || url.equals("") || url.equals("nsfw") || url.equals("spoiler")) {
             imageView.setVisibility(View.GONE);
@@ -74,7 +74,7 @@ public class PostAdapter extends PagedListAdapter<Post, PostAdapter.PostViewHold
 
 
                 imageView.setVisibility(View.VISIBLE);
-                Glide.with(context).load(url).fitCenter().into(imageView);
+                Glide.with(context).load(url).centerCrop().into(imageView);
             }
         }
 

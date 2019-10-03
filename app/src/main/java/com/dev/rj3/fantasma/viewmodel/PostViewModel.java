@@ -6,9 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PageKeyedDataSource;
 import androidx.paging.PagedList;
 
 import com.dev.rj3.fantasma.model.PostDataSourceFactory;
+import com.dev.rj3.fantasma.model.children.Entry;
 import com.dev.rj3.fantasma.posts.Post;
 import com.dev.rj3.fantasma.retrofit.RedditAPI;
 import com.dev.rj3.fantasma.retrofit.RetrofitInstance;
@@ -19,9 +21,9 @@ import java.util.concurrent.Executors;
 
 public class PostViewModel extends AndroidViewModel {
 
-    private Executor executor;
-    private LiveData<PagedList<Post>> pagedListLiveData;
+    private LiveData<PagedList<Entry>> pagedListLiveData;
     private PostDataSourceFactory postDataSourceFactory;
+    private LiveData<PageKeyedDataSource<String, Entry>> liveDataSource;
 
     @SuppressWarnings("unchecked")
     public PostViewModel(@NonNull Application application) {
@@ -30,25 +32,19 @@ public class PostViewModel extends AndroidViewModel {
 
         RedditAPI redditAPI = RetrofitInstance.getRetrofitInstance();
         postDataSourceFactory = new PostDataSourceFactory(redditAPI, application);
-
+        liveDataSource = postDataSourceFactory.getPostLiveDataSource();
 
         PagedList.Config config = (new PagedList.Config.Builder())
-                .setEnablePlaceholders(true)
-                //.setInitialLoadSizeHint(10)
+                .setEnablePlaceholders(false)
                 .setPageSize(25)
-                .setPrefetchDistance(4)
                 .build();
 
-        executor = Executors.newFixedThreadPool(5);
 
-
-        pagedListLiveData = (new LivePagedListBuilder<String, Post>(postDataSourceFactory, config))
-                .setFetchExecutor(executor).build();
-
+        pagedListLiveData = (new LivePagedListBuilder(postDataSourceFactory, config)).build();
 
     }
 
-    public LiveData<PagedList<Post>> getPagedListLiveData() {
+    public LiveData<PagedList<Entry>> getPagedListLiveData() {
         return pagedListLiveData;
     }
 

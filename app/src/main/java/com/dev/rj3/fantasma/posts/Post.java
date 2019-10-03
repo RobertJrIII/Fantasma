@@ -1,6 +1,6 @@
 package com.dev.rj3.fantasma.posts;
 
-
+@Deprecated
 public class Post {
 
     private String title;
