@@ -7,7 +7,6 @@ import androidx.paging.DataSource;
 import androidx.paging.PageKeyedDataSource;
 
 import com.dev.rj3.fantasma.model.children.Entry;
-import com.dev.rj3.fantasma.posts.Post;
 import com.dev.rj3.fantasma.repository.PostDataSource;
 import com.dev.rj3.fantasma.retrofit.RedditAPI;
 

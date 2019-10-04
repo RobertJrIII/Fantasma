@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide;
 
 import com.dev.rj3.fantasma.R;
 import com.dev.rj3.fantasma.model.children.Entry;
-import com.dev.rj3.fantasma.posts.Post;
 
 
 public class PostAdapter extends PagedListAdapter<Entry, PostAdapter.PostViewHolder> {

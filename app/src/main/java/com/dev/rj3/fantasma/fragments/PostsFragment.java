@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.rj3.fantasma.R;
 import com.dev.rj3.fantasma.model.children.Entry;
-import com.dev.rj3.fantasma.posts.Post;
 import com.dev.rj3.fantasma.adapter.PostAdapter;
 import com.dev.rj3.fantasma.viewmodel.PostViewModel;
 

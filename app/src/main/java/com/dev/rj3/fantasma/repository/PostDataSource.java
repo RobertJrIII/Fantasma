@@ -8,7 +8,6 @@ import androidx.paging.PageKeyedDataSource;
 import com.dev.rj3.fantasma.model.Feed;
 import com.dev.rj3.fantasma.model.children.Children;
 import com.dev.rj3.fantasma.model.children.Entry;
-import com.dev.rj3.fantasma.posts.Post;
 import com.dev.rj3.fantasma.retrofit.RedditAPI;
 import com.dev.rj3.fantasma.retrofit.RetrofitInstance;
 
