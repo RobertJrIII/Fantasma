@@ -1,8 +1,9 @@
 package com.dev.rj3.fantasma.model.children;
 
+import androidx.annotation.Nullable;
+
 import com.dev.rj3.fantasma.model.children.all_awardings.Awards;
 import com.dev.rj3.fantasma.model.children.images.Images;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -10,77 +11,59 @@ import java.util.ArrayList;
 public class Entry {
 
     @SerializedName("saved")
-    @Expose
     private boolean saved;
 
     @SerializedName("hidden")
-    @Expose
     private boolean hidden;
 
     @SerializedName("clicked")
-    @Expose
     private boolean clicked;
 
     @SerializedName("hide_score")
-    @Expose
     private boolean hide_score;
 
     @SerializedName("archived")
-    @Expose
     private boolean archived;
 
     @SerializedName("name")
-    @Expose
     private String name;
 
     @SerializedName("images")
-    @Expose
     private ArrayList<Images> images;
 
     @SerializedName("title")
-    @Expose
     private String title;
 
     @SerializedName("spoiler")
-    @Expose
     private boolean spoiler;
 
     @SerializedName("locked")
-    @Expose
     private boolean locked;
 
     @SerializedName("num_comments")
-    @Expose
     private int num_comments;
 
     @SerializedName("all_awardings")
-    @Expose
     private ArrayList<Awards> awards;
 
     @SerializedName("subreddit_name_prefixed")
-    @Expose
     private String subreddit_name_prefixed;
 
     @SerializedName("thumbnail")
-    @Expose
     private String thumbnail;
 
     @SerializedName("stickied")
-    @Expose
     private boolean stickied;
 
 
     @SerializedName("score")
-    @Expose
     private int score;
 
 
     @SerializedName("author")
-    @Expose
     private String author;
 
     @SerializedName("url")
-    @Expose
     private String url;
 
     public String getTitle() {
@@ -123,6 +106,7 @@ public class Entry {
         this.author = author;
     }
 
+    @Nullable
     public String getThumbnail() {
         return thumbnail;
     }

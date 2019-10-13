@@ -14,8 +14,6 @@ import com.dev.rj3.fantasma.model.children.Entry;
 import com.dev.rj3.fantasma.retrofit.RedditAPI;
 import com.dev.rj3.fantasma.retrofit.RetrofitInstance;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 
 public class PostViewModel extends AndroidViewModel {

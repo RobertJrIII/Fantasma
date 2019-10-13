@@ -1,22 +1,18 @@
 package com.dev.rj3.fantasma.model;
 
 import com.dev.rj3.fantasma.model.children.Children;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 
 public class Data {
 
 
     @SerializedName("modhash")
-    @Expose
     private String modhash;
 
 
 
     @SerializedName("children")
-    @Expose
     private ArrayList<Children> children;
 
 

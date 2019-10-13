@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.emoji.widget.EmojiTextView;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
@@ -47,7 +48,8 @@ public class PostAdapter extends PagedListAdapter<Entry, PostAdapter.PostViewHol
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(context).inflate(R.layout.post_item, parent, false);
-        PostViewHolder postViewHolder = new PostViewHolder(v);
+        PostViewHolder postViewHolder;
+        postViewHolder = new PostViewHolder(v);
         return postViewHolder;
     }
 
@@ -57,7 +59,7 @@ public class PostAdapter extends PagedListAdapter<Entry, PostAdapter.PostViewHol
 
 
         Entry post = getItem(position);
-        String url = post.getThumbnail();
+       String url = post.getThumbnail();
         ImageView imageView = holder.mImageView;
         holder.mTitle.setText(post.getTitle());
         holder.mSubreddit.setText(post.getSubreddit_name_prefixed());
@@ -73,7 +75,7 @@ public class PostAdapter extends PagedListAdapter<Entry, PostAdapter.PostViewHol
 
 
                 imageView.setVisibility(View.VISIBLE);
-                Glide.with(context).load(url).centerCrop().into(imageView);
+                Glide.with(context).load(url).fitCenter().centerInside().into(imageView);
             }
         }
 

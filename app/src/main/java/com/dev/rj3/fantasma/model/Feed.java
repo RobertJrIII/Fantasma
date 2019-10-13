@@ -1,16 +1,12 @@
 package com.dev.rj3.fantasma.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 public class Feed {
     @SerializedName("kind")
-    @Expose
     private String kind;
 
 
     @SerializedName("data")
-    @Expose
     private Data data;
 
     public String getKind() {

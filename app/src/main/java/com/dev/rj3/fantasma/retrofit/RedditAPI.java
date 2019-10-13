@@ -12,20 +12,20 @@ public interface RedditAPI {
 
 
     @Headers("Content-Type: application/json")
-    @GET(".json")
+    @GET()
     Call<Feed> getSubRedditData();
 
     @Headers("Content-Type: application/json")
-    @GET("{subName}/.json")
+    @GET("{subName}/")
     Call<Feed> getSubRedditData(@Path("subName") String subName, @Query("after") String after);
 
     @Headers("Content-Type: application/json")
-    @GET("search.json")
+    @GET("search")
     Call<Feed> getSearchResults(@Query("q") String query);
 
 
     @Headers("Content-Type: application/json")
-    @GET(".json")
+    @GET()
     Call<Feed> getFrontPageData(@Query("after") String after);
 
 
