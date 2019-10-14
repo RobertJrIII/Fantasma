@@ -59,12 +59,14 @@ public class PostAdapter extends PagedListAdapter<Entry, PostAdapter.PostViewHol
 
 
         Entry post = getItem(position);
-       String url = post.getThumbnail();
+        String url = post.getThumbnail();
         ImageView imageView = holder.mImageView;
         holder.mTitle.setText(post.getTitle());
         holder.mSubreddit.setText(post.getSubreddit_name_prefixed());
         holder.mAuthor.setText(post.getAuthor());
-        if (url.equals("self") || url.equals("default") || url.equals("") || url.equals("nsfw") || url.equals("spoiler")) {
+        if (url == null) {
+            imageView.setVisibility(View.GONE);
+        } else if (url.equals("self") || url.equals("default") || url.equals("") || url.equals("nsfw") || url.equals("spoiler")) {
             imageView.setVisibility(View.GONE);
 
         } else {

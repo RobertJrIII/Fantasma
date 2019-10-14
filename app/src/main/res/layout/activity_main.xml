@@ -13,7 +13,7 @@
     <include
 
         layout="@layout/toolbar"
-        android:layout_above="@id/nav_host_fragment" />
+       />
 
 
     <fragment
