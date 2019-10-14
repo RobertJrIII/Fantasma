@@ -34,7 +34,7 @@ public class PostAdapter extends PagedListAdapter<Entry, PostAdapter.PostViewHol
     private static final DiffUtil.ItemCallback<Entry> DIFF_CALLBACK = new DiffUtil.ItemCallback<Entry>() {
         @Override
         public boolean areItemsTheSame(@NonNull Entry oldItem, @NonNull Entry newItem) {
-            return oldItem.getName().equals(newItem.getName());
+            return oldItem.getId().equals(newItem.getId());
         }
 
         @Override

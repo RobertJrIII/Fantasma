@@ -13,6 +13,12 @@ public class Entry {
     @SerializedName("saved")
     private boolean saved;
 
+    @SerializedName("id")
+    private String id;
+
+    @SerializedName("selftext")
+    private String selftext;
+
     @SerializedName("hidden")
     private boolean hidden;
 
@@ -82,6 +88,30 @@ public class Entry {
         this.subreddit_name_prefixed = subreddit_name_prefixed;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getSelftext() {
+        return selftext;
+    }
+
+    public void setSelftext(String selftext) {
+        this.selftext = selftext;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
     public boolean isStickied() {
         return stickied;
     }
@@ -106,7 +136,6 @@ public class Entry {
         this.author = author;
     }
 
-    @Nullable
     public String getThumbnail() {
         return thumbnail;
     }
@@ -209,5 +238,12 @@ public class Entry {
 
     public void setImages(ArrayList<Images> images) {
         this.images = images;
+    }
+
+
+    public boolean equals(@Nullable Entry entry) {
+        return (entry.getAuthor().equals(getAuthor()) && entry.getTitle().equals(getTitle()) &&
+                entry.getSubreddit_name_prefixed().equals(getSubreddit_name_prefixed()) &&
+                entry.getSelftext().equals(getSelftext()));
     }
 }
